@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  master:
+    image: rancher/k3s:latest
+    command: server
+    privileged: true
+    restart: always
+    ports:
+      - "6443:6443"
+      - "80:80"
+    volumes:
+      - /etc/kubernetes
+    networks:
+      - k3snet
+
+  worker:
+    image: rancher/k3s:latest
+    command: agent
+    restart: always
+    privileged: true
+    depends_on:
+      - master
+    environment:
+      K3S_URL: "https://master:6443"
+      K3S_TOKEN: "mysecrettoken"
+    networks:
+      - k3snet
+
+networks:
+  k3snet:
+    driver: bridge

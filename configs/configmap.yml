@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: html-config
+  namespace: geovannybucay
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto AKS</title>
+    </head>
+    <body>
+    <h1>Reto AXS</h1>
+    <p>Bienvenido al reto de despliegue con  AKS Geovanny Bucay</p>
+    </body>
+    </html>
